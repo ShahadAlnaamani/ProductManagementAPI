@@ -1,5 +1,6 @@
 ﻿using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Models;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace ProductManagementAPI.Repositories
 {
@@ -12,9 +13,11 @@ namespace ProductManagementAPI.Repositories
             _context = context;
         }
 
-        public IEnumerable<Product> GetAllProducts()
+        public IEnumerable<Product> GetAllProducts(int page, int PageSize)
         {
-            return _context.Products.ToList();
+            int size = PageSize;
+            int number = PageSize * page;
+            return _context.Products.OrderByDescending(p => p.DateAdded).Skip(number).Take(PageSize).ToList();
         }
 
         public Product GetProductById(int id)

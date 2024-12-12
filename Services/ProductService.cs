@@ -30,10 +30,10 @@ namespace ProductManagementAPI.Services
         }
 
 
-        public List<ProductOutputDTO> GetAllProducts()
+        public List<ProductOutputDTO> GetAllProducts(int page, int PageSize)
         {
             var ListofProducts = new List<ProductOutputDTO>();
-            foreach (Product product in _productRepository.GetAllProducts())
+            foreach (Product product in _productRepository.GetAllProducts(page, PageSize))
             {
                 var p = ConvertToOutputDTO(product);
 

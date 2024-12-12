@@ -10,7 +10,8 @@ namespace ProductManagementAPI.Services
         Product ConvertToProduct(ProductInputDTO productDTO);
         void DeleteProduct(int ID);
         ProductOutputDTO GetProductByID(int id);
-        List<ProductOutputDTO> GetAllProducts();
+        List<ProductOutputDTO> GetAllProducts(int page, int PageSize);
+
         ProductOutputDTO UpdateProduct(ProductInputDTO product, int ID);
     }
 }
