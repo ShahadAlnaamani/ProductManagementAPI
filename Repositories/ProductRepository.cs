@@ -1,4 +1,5 @@
-﻿using ProductManagementAPI.Models;
+﻿using ProductManagementAPI.DTOs;
+using ProductManagementAPI.Models;
 
 namespace ProductManagementAPI.Repositories
 {
@@ -21,6 +22,12 @@ namespace ProductManagementAPI.Repositories
             return _context.Products.FirstOrDefault(p => p.PID == id);
         }
 
+        public int GetProductId(string name)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Name == name);
+            return product.PID;
+        }
+
         public int AddProduct(Product product)
         {
             _context.Products.Add(product);
@@ -38,7 +45,7 @@ namespace ProductManagementAPI.Repositories
             }
         }
 
-        public void UpdateProduct(int id, Product product)
+        public Product UpdateProduct(int id, ProductInputDTO product)
         {
             var currentProduct = GetProductById(id);
             if (currentProduct != null)
@@ -49,7 +56,9 @@ namespace ProductManagementAPI.Repositories
 
                 _context.Products.Update(currentProduct);
                 _context.SaveChanges();
+                
             }
+            return currentProduct;
         }
     }
 }

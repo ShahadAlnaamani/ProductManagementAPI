@@ -1,4 +1,5 @@
-﻿using ProductManagementAPI.Models;
+﻿using ProductManagementAPI.DTOs;
+using ProductManagementAPI.Models;
 
 namespace ProductManagementAPI.Repositories
 {
@@ -8,6 +9,8 @@ namespace ProductManagementAPI.Repositories
         void DeleteProduct(int id);
         IEnumerable<Product> GetAllProducts();
         Product GetProductById(int id);
-        void UpdateProduct(int id, Product product);
+        int GetProductId(string name);
+        Product UpdateProduct(int id, ProductInputDTO product)
+
     }
 }
