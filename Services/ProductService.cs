@@ -30,7 +30,7 @@ namespace ProductManagementAPI.Services
         }
 
 
-        public List<ProductOutputDTO> GetProducts()
+        public List<ProductOutputDTO> GetAllProducts()
         {
             var ListofProducts = new List<ProductOutputDTO>();
             foreach (Product product in _productRepository.GetAllProducts())

@@ -35,7 +35,7 @@ namespace ProductManagementAPI.Controllers
         {
             try
             {
-                return Ok(_productService.GetProducts);
+                return Ok(_productService.GetAllProducts());
             }
             catch (Exception ex)
             {
