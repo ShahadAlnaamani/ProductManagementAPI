@@ -1,5 +1,7 @@
 
 using Microsoft.EntityFrameworkCore;
+using ProductManagementAPI.Repositories;
+using ProductManagementAPI.Services;
 
 namespace ProductManagementAPI
 {
@@ -13,6 +15,12 @@ namespace ProductManagementAPI
             // Add services to the container.
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+            builder.Services.AddScoped<IProductService, ProductService>();
+
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

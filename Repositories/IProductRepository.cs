@@ -10,7 +10,7 @@ namespace ProductManagementAPI.Repositories
         IEnumerable<Product> GetAllProducts();
         Product GetProductById(int id);
         int GetProductId(string name);
-        Product UpdateProduct(int id, ProductInputDTO product)
+        Product UpdateProduct(int id, ProductInputDTO product);
 
     }
 }
