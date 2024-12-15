@@ -1,19 +1,28 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using ProductManagementAPI.DTOs;
 using ProductManagementAPI.Services;
+using System.IdentityModel.Tokens.Jwt;
 using System.Reflection;
+using System.Security.Claims;
+using System.Text;
 
 namespace ProductManagementAPI.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[Controller]")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService _productService;
 
+
         public ProductController(IProductService productService)
         {
             _productService = productService;
+
         }
 
         [HttpPost("AddProduct")]
@@ -31,11 +40,11 @@ namespace ProductManagementAPI.Controllers
 
 
         [HttpGet("GetAllProducts")]
-        public IActionResult GetAllProducts()
+        public IActionResult GetAllProducts(int page, int PageSize)
         {
             try
             {
-                return Ok(_productService.GetAllProducts());
+                return Ok(_productService.GetAllProducts(page, PageSize));
             }
             catch (Exception ex)
             {
