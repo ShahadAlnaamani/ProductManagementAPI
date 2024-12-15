@@ -37,5 +37,10 @@ namespace ProductManagementAPI.Repositories
                 _context.SaveChanges();
             }
         }
+
+        public User GetUser(string uname, string password)
+        {
+            return _context.Users.Where(u => u.UserName == uname & u.Password == password).FirstOrDefault();
+        }
     }
 }

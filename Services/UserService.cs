@@ -43,5 +43,11 @@ namespace ProductManagementAPI.Services
             _userRepository.DeleteUser(ID);
         }
 
+        public User GetUser(string uname, string password)
+        {
+            return _userRepository.GetUser(uname, password);
+
+        }
+
     }
 }

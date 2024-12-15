@@ -8,5 +8,6 @@ namespace ProductManagementAPI.Services
         void DeleteUser(int ID);
         List<User> GetAllUsers();
         User GetUserByID(int id);
+        public User GetUser(string uname, string password);
     }
 }
